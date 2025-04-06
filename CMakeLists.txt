@@ -1,8 +1,15 @@
-# main cmakelists.txt that sets up project and 
-# uses add_subdirectory to run cmakelists.txt in src and extern(libraries)
+# Main CMakeLists.txt
+cmake_minimum_required(VERSION 3.16)  # Updated to a more recent version
+project(Showdown 
+    VERSION 0.1.0
+    LANGUAGES CXX
+)
 
-cmake_minimum_required(VERSION 3.10)
-project(Showdown)
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_subdirectory(src)
+# Add subdirectories
 add_subdirectory(extern)
+add_subdirectory(src)
