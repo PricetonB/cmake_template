@@ -1,13 +1,5 @@
-#extern
-#this file will use add_subdirectory to add individual libraries as needed and 
-#use add_library to define the rest of the libraries that are not handled with add_subdirectory
-#in this example entt header only library will be implemented with add_subdirectoroy. 
-#sdl2 will be implemented here.
-
 # extern/CMakeLists.txt
 # External dependencies management
-
-
 
 #---------------------------------------------------------------
 # SDL2 handling
@@ -18,32 +10,31 @@ if(NOT SDL2_FOUND)
         SDL2
         GIT_REPOSITORY https://github.com/libsdl-org/SDL.git
         GIT_TAG release-2.30.1  # Use a specific stable version
+        SOURCE_SUBDIR SDL2  # Optional: explicitly point to the root where CMakeLists.txt is
     )
-    FetchContent_MakeAvailable(SDL2)
+    # Fetch and add SDL2 as a subdirectory to use its own CMakeLists.txt
+    FetchContent_GetProperties(SDL2)
+    if(NOT sdl2_POPULATED)
+        FetchContent_Populate(SDL2)
+        add_subdirectory(${sdl2_SOURCE_DIR} ${sdl2_BINARY_DIR})
+    endif()
 endif()
 
-# Create SDL2 target if not found by find_package
+# Create an alias for consistency, whether found or fetched
 if(TARGET SDL2::SDL2)
-    # If SDL2 was found via find_package
     add_library(sdl2 ALIAS SDL2::SDL2)
 else()
-    add_library(sdl2 INTERFACE)
-    target_link_libraries(sdl2 INTERFACE SDL2)
-    target_include_directories(sdl2 INTERFACE ${SDL2_SOURCE_DIR}/include)
+    message(FATAL_ERROR "SDL2 could not be found or built; SDL2::SDL2 target is missing")
 endif()
-#----------------------------------------------------------------
 
-
-# EnTT subdirectory
+#---------------------------------------------------------------
+# EnTT subdirectory (keeping your original structure)
 add_subdirectory(entt)
 
-#----------------------------------------------------------------
-
-
-
+#---------------------------------------------------------------
 # Interface library for external dependencies
 add_library(app_external_depend INTERFACE)
 target_link_libraries(app_external_depend INTERFACE
-    sdl2
+    sdl2        # Using the alias we defined
     EnTT::EnTT  # Using proper target name from EnTT
 )
