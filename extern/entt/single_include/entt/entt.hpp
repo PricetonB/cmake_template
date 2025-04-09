@@ -1,4 +1,4 @@
-#entt single header file
+//entt single header file
 
 
 /*! @brief `EnTT` default namespace. */
