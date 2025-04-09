@@ -32,9 +32,9 @@ bool Scene::init()
     std::random_device rd;
     std::default_random_engine eng(rd());
     std::uniform_int_distribution<u_char> distrgb(80, 255);
-    std::uniform_int_distribution<float> distxpos(10, config::WINDOW_WIDTH - 10);
-    std::uniform_int_distribution<float> distypos(10, config::WINDOW_HEIGHT - 10);
-    std::uniform_int_distribution<float> distvel(1, 5);
+    std::uniform_real_distribution<float> distxpos(10, config::WINDOW_WIDTH - 10);
+    std::uniform_real_distribution<float> distypos(10, config::WINDOW_HEIGHT - 10);
+    std::uniform_real_distribution<float> distvel(1, 5);
 
     // create entities, with position, velocity and color components
     for(int i = 0; i < NUM_CONFETTI; ++i) {
