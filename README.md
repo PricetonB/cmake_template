@@ -21,22 +21,4 @@ Build Instructions
     cmake --build .
     Executable: build/src/showdown (Linux) or build/src/Debug/showdown.exe (Windows)
 
-Showdown/
-├── CMakeLists.txt
-├── src/
-│   ├── CMakeLists.txt
-│   ├── include/         # Include directory inside src/
-│   │   ├── Game.hpp
-│   │   ├── Scene.hpp
-│   │   ├── components.hpp
-│   │   └── config.hpp
-│   ├── main.cpp
-│   ├── Game.cpp
-│   └── Scene.cpp
-└── extern/
-    ├── CMakeLists.txt
-    └── entt/
-        ├── CMakeLists.txt
-        └── single_include/
-            └── entt/
-                └── entt.hpp
+
