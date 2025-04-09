@@ -15,6 +15,7 @@ Prerequisites
     Build tools: make (Linux) or Visual Studio (Windows)
 
 Build Instructions
+
     git clone https://github.com/PricetonB/cmake_template.git && cd cmake_template 
     mkdir build && cd build
     cmake .. (Windows: cmake .. -G "Visual Studio 16 2019")
