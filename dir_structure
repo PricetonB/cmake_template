@@ -2,7 +2,14 @@ Showdown/
 ├── CMakeLists.txt
 ├── src/
 │   ├── CMakeLists.txt
-│   └── main.cpp
+│   ├── include/         # Include directory inside src/
+│   │   ├── Game.hpp
+│   │   ├── Scene.hpp
+│   │   ├── components.hpp
+│   │   └── config.hpp
+│   ├── main.cpp
+│   ├── Game.cpp
+│   └── Scene.cpp
 └── extern/
     ├── CMakeLists.txt
     └── entt/
