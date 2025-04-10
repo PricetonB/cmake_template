@@ -1,8 +1,6 @@
 # extern/CMakeLists.txt
 # External dependencies management
 
-# extern/CMakeLists.txt
-# External dependencies management
 
 #---------------------------------------------------------------
 # SDL2 handling
@@ -22,9 +20,7 @@ if(NOT SDL2_FOUND)
     endif()
 endif()
 
-# Check if SDL2::SDL2 exists and use it directly; no need to redefine an alias
 if(TARGET SDL2::SDL2)
-    # Use SDL2::SDL2 as-is without creating a redundant alias
     set(SDL2_TARGET SDL2::SDL2)
 else()
     message(FATAL_ERROR "SDL2 could not be found or built; SDL2::SDL2 target is missing")
@@ -38,6 +34,6 @@ add_subdirectory(entt)
 # Interface library for external dependencies
 add_library(app_external_depend INTERFACE)
 target_link_libraries(app_external_depend INTERFACE
-    ${SDL2_TARGET}  # Use the resolved target name
-    EnTT::EnTT      # Using proper target name from EnTT
+    ${SDL2_TARGET}  
+    EnTT::EnTT      
 )

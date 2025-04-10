@@ -1,8 +1,5 @@
-#used to build header only entt library
-#this is cmakelists for entt that 
 
-# extern/entt/CMakeLists.txt
-# EnTT header-only library
+# EnTT header-only library handling
 
 # Define interface library
 add_library(EnTT INTERFACE)
