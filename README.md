@@ -4,6 +4,7 @@ A C++ template using CMake to automate dependency management, automatically sear
 
 
 Structure
+
     CMakeLists.txt: Includes src/ (source) and extern/ (dependencies).
     src/: Source files and dependency linking.
     extern/: Dependency setup (e.g., entt-confetti).
